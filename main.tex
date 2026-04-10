@@ -305,18 +305,18 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Developed and maintained all aspects of a smart parking space management system, primarily using Kotlin and Python.
-\item Managed cloud infrastructure with Terraform, taking end-to-end ownership of deployments and operations.
-\item Built a real-time analytics module from scratch, introducing Redshift as a data lake, setting up data streaming from DynamoDB, and implementing the microservice communicating with end-users.
-\item Set up Grafana for serving analytics data for internal usage, helping Marketing and Customer Service teams.
-\item Led architectural planning and migration strategies for long-term scalability.
-\item Launched a new automation tool using a new Cloudfront dist authenticated via Lambda@Edge \& Google Groups and a new microservice for the Customer Service team during a hackathon.
-\item Prepared and ran load tests on the system with JMeter and Postman.
+            \item Developed and scaled a B2B smart parking platform with 100+ corporate clients including BMW and Henkel, spanning \textasciitilde 30 microservices across the DACH region.
+\item Maintained cloud infrastructure across 10+ AWS accounts and 3 environments using Terraform, identifying resource leaks and over-provisioned services that saved thousands in monthly cloud costs.
+\item Built a real-time analytics module from scratch, introducing Redshift as a data lake, streaming data from DynamoDB, and serving custom dashboards for end-users.
+\item Deployed Grafana dashboards that enabled Marketing and Customer Service teams to access analytics data independently.
+\item Drove architectural decisions across the team, including database operations, endpoint design, and long-term scalability planning.
+\item Launched a customer onboarding automation tool during a hackathon using CloudFront, Lambda@Edge, and a new microservice, replacing a manual Excel-based process, giving the Customer Service team self-service capability, and saving both teams hours weekly.
+\item Designed and ran load tests with JMeter after customers reported delays of up to an hour and double bookings, driving several performance improvements that resolved the issues.
 \item Identified and resolved synchronization and scalability issues under time pressure, including misconfigured DB indexes, API Gateway throttling, duplicate reservations, and ghost locks.
-\item Maintained user provisioning endpoints based on SCIM protocol.
-\item Coached and mentored Junior developers and QA Engineers.
-\item Supported IoT team through code reviews and bug investigations using IoT tools such as Balena.
-%\item Led debugging and resolving many critical issues with time pressure, including .
+\item Took ownership of a partially implemented SCIM-based user provisioning service, stabilizing and extending it for production use.
+\item Served as a technical advisor on product roadmap and feature design, consulted by product managers and stakeholders.
+\item Mentored junior developers and QA engineers through code reviews and technical guidance.
+\item Supported the IoT team with Python code reviews and on-call debugging of unresponsive terminals via Balena.
             \end{highlights}
         \end{onecolentry}
 
@@ -334,13 +334,13 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-\item Developed user-oriented modules of an HR \& Insurance platform, using Kotlin and Spring Boot.
-\item Architected and implemented a pharmacy integration end-to-end: periodic catalog fetching via EventBridge, order placement, and real-time package tracking.
-\item Implemented search-on-type for the products sitting on Mongo via Elasticsearch. 
-\item Ideated and launched the \textit{Employee Wellness} module during a hackathon, introducing employee competitions that proved so successful the company began selling it as a standalone product.
-\item Optimized existing integrations including doctor booking and online consultancies -- reducing request frequency, improving error handling, and redesigning user flows.
-\item Built internal tooling pages for product management teams using Vaadin.
-\item Contributed to all phases of development, including planning, product, and design decisions.
+\item Developed the health and wellness modules of an HR platform serving 3,000+ companies across the UAE, including online pharmacy, doctor consultations, and employee wellness.
+\item Architected and implemented a pharmacy integration end-to-end: normalizing catalog data from external services, syncing orders, and tracking package delivery status in real-time for end-users.
+\item Migrated pharmacy product search from legacy Elasticsearch libraries to modern ones, implementing search-on-type over hundreds of products synced from MongoDB.
+\item Ideated and launched the \textit{Employee Wellness} module during a hackathon to drive engagement on underused health features, introducing gamified challenges and competitions across 1,500+ member companies that proved so successful the company began selling it as a standalone product.
+\item Optimized external integrations including doctor booking and online consultancies -- reducing unnecessary API calls, improving error handling, and redesigning user flows.
+\item Built admin panels using Vaadin for content management, ad campaigns, notifications, and dead-letter queue monitoring.
+\item Collaborated closely with product managers on feature scoping and design decisions before implementation.
 \item Mentored teammates on technical decisions and development processes as the most senior team member.
             \end{highlights}
         \end{onecolentry}
@@ -358,14 +358,14 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Contributed to the development of \href{https://www.youtube.com/watch?v=YnbQ9wY3OYE}{Astar-BI}, a business intelligence product in the defense and IT sectors.
-\item Greenfield project -- took it from near-scratch to market-ready within a year.
+            \item Developed \href{https://www.youtube.com/watch?v=YnbQ9wY3OYE}{Astar-BI}, a greenfield business intelligence platform by HAVELSAN, from near-scratch to market-ready within a year -- first deployed for the Turkish Ministry of Education to analyze data across \textasciitilde 67,000 schools.
+\item Part of HAVELSAN's R\&D Division, Big Data \& AI team.
 \item Developed across all microservices using Java and Spring Boot, resolving RabbitMQ bottlenecks and addressing defects surfaced by external load and security tests.
-\item Cooperated closely with Turkish Ministry of Education officials, incorporating feedback into rapid iteration cycles.
+\item Worked on-site with Turkish Ministry of Education officials for months, conducting demos, acceptance tests, and incorporating feedback into rapid iteration cycles.
 \item After launch and first sale, redesigned the authorization and sharing mechanism using ACLs and MongoDB, reducing sharing propagation time by 98\%.
-\item Implemented search-on-type with Elasticsearch for OLAP cubes fetched from Oracle, PostgreSQL, and others.
+\item Implemented search-on-type with Elasticsearch over OLAP cubes aggregated from Oracle, PostgreSQL, and other heterogeneous data sources.
 \item Prototyped inter-service communication using gRPC, achieving a 42\% increase in data transfer speed.
-\item Onboarded and mentored new team members after the team expanded.
+\item Served as the primary knowledge source when the team rebuilt from 2 to 8 engineers, onboarding and mentoring the entire new team on the codebase and domain.
             \end{highlights}
         \end{onecolentry}
 
@@ -383,11 +383,12 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Developed Defter Beyan Sistemi, a tax calculation and declaration system for the Revenue Administration of Turkey, serving hundreds of thousands of users with legal impact on millions.
+            \item Developed Defter Beyan Sistemi, a tax calculation and declaration system for the Revenue Administration of Turkey, serving 3+ million taxpayers with direct legal impact on their tax obligations.
             \item Delivered features using Java, Spring Boot, JDBC, and Liquibase under strict government deadlines, with multiple production builds per day.
 \item Architected, developed, and maintained the Fixtures module backend independently, occasionally leading other developers on it.
-\item Solved legally critical problems and secured APIs for external consumers.
-\item Collaborated closely with accountants and government consultants.
+\item Designed and secured public-facing APIs for end-users and third-party accounting software integrations.
+\item Became the team's go-to expert for complex SQL, writing surgical queries using CTEs to diagnose and fix data issues caused by past bugs.
+\item Solved legally sensitive problems in tax calculation logic where even minor bugs could cause significant financial impact, collaborating closely with accountants and government consultants to ensure correctness.
             \end{highlights}
         \end{onecolentry}
 
@@ -404,12 +405,9 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Created an ontology graph through text mining using various NLP techniques.
-            \item Planned and implemented pre-processing and post-processing pipelines for Turkish and English texts.
-            \item Used libraries such as \textit{word2vec}, \textit{zemberek}, and \textit{scikit-learn} to improve overall accuracy.
-\item Led the project as the sole ML engineer, managing a team of junior developers and interns.
-\item Presented the project to academics across disciplines and incorporated their feedback.
-\item Delivered presentations for multiple projects as the company's representative.
+            \item Led an NLP research project to build a religious ontology graph -- the only engineer with machine learning expertise, managing a team of juniors and interns straight out of university.
+            \item Designed text mining pipelines for Turkish and English using \textit{word2vec}, \textit{zemberek}, and \textit{scikit-learn}, iterating on accuracy with feedback from professors at top Turkish universities.
+\item Represented the company as a technical presenter across multiple projects.
             \end{highlights}
         \end{onecolentry}
 
