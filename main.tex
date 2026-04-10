@@ -1,0 +1,606 @@
+\documentclass[10pt, letterpaper]{article}
+
+% Packages:
+\usepackage[
+    ignoreheadfoot, % set margins without considering header and footer
+    top=2 cm, % seperation between body and page edge from the top
+    bottom=2 cm, % seperation between body and page edge from the bottom
+    left=2 cm, % seperation between body and page edge from the left
+    right=2 cm, % seperation between body and page edge from the right
+    footskip=1.0 cm, % seperation between body and footer
+    % showframe % for debugging 
+]{geometry} % for adjusting page geometry
+\usepackage{titlesec} % for customizing section titles
+\usepackage{tabularx} % for making tables with fixed width columns
+\usepackage{array} % tabularx requires this
+\usepackage[dvipsnames]{xcolor} % for coloring text
+\definecolor{primaryColor}{RGB}{0, 79, 144} % define primary color
+\usepackage{enumitem} % for customizing lists
+\usepackage{fontawesome5} % for using icons
+\usepackage{amsmath} % for math
+\usepackage[
+    pdftitle={Sakir Cimen's Resume},
+    pdfauthor={Sakir Cimen Doe},
+    colorlinks=true,
+    urlcolor=primaryColor
+]{hyperref} % for links, metadata and bookmarks
+\usepackage[pscoord]{eso-pic} % for floating text on the page
+\usepackage{calc} % for calculating lengths
+\usepackage{bookmark} % for bookmarks
+\usepackage{lastpage} % for getting the total number of pages
+\usepackage{changepage} % for one column entries (adjustwidth environment)
+\usepackage{paracol} % for two and three column entries
+\usepackage{ifthen} % for conditional statements
+\usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{iftex} % check if engine is pdflatex, xetex or luatex
+
+% Ensure that generate pdf is machine readable/ATS parsable:
+\ifPDFTeX
+    \input{glyphtounicode}
+    \pdfgentounicode=1
+    % \usepackage[T1]{fontenc} % this breaks sb2nov
+    \usepackage[utf8]{inputenc}
+    \usepackage{lmodern}
+    \
+\fi
+
+
+
+% Some settings:
+\AtBeginEnvironment{adjustwidth}{\partopsep0pt} % remove space before adjustwidth environment
+\pagestyle{empty} % no header or footer
+\setcounter{secnumdepth}{0} % no section numbering
+\setlength{\parindent}{0pt} % no indentation
+\setlength{\topskip}{0pt} % no top skip
+\setlength{\columnsep}{0cm} % set column seperation
+\makeatletter
+\let\ps@customFooterStyle\ps@plain % Copy the plain style to customFooterStyle
+\patchcmd{\ps@customFooterStyle}{\thepage}{
+    \color{gray}\textit{\small Şakir Çimen - Page \thepage{} of \pageref*{LastPage}}
+}{}{} % replace number by desired string
+\makeatother
+\pagestyle{customFooterStyle}
+
+\titleformat{\section}{\needspace{4\baselineskip}\bfseries\large}{}{0pt}{}[\vspace{1pt}\titlerule]
+
+\titlespacing{\section}{
+    % left space:
+    -1pt
+}{
+    % top space:
+    0.3 cm
+}{
+    % bottom space:
+    0.2 cm
+} % section title spacing
+
+\renewcommand\labelitemi{$\circ$} % custom bullet points
+\newenvironment{highlights}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=0.4 cm + 10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights
+
+\newenvironment{highlightsforbulletentries}{
+    \begin{itemize}[
+        topsep=0.10 cm,
+        parsep=0.10 cm,
+        partopsep=0pt,
+        itemsep=0pt,
+        leftmargin=10pt
+    ]
+}{
+    \end{itemize}
+} % new environment for highlights for bullet entries
+
+
+\newenvironment{onecolentry}{
+    \begin{adjustwidth}{
+        0.2 cm + 0.00001 cm
+    }{
+        0.2 cm + 0.00001 cm
+    }
+}{
+    \end{adjustwidth}
+} % new environment for one column entries
+
+\newenvironment{twocolentry}[2][]{
+    \onecolentry
+    \def\secondColumn{#2}
+    \setcolumnwidth{\fill, 4.5 cm}
+    \begin{paracol}{2}
+}{
+    \switchcolumn \raggedleft \secondColumn
+    \end{paracol}
+    \endonecolentry
+} % new environment for two column entries
+
+\newenvironment{header}{
+    \setlength{\topsep}{0pt}\par\kern\topsep\centering\linespread{1.5}
+}{
+    \par\kern\topsep
+} % new environment for the header
+
+\newcommand{\placelastupdatedtext}{% \placetextbox{<horizontal pos>}{<vertical pos>}{<stuff>}
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    \put(
+        \LenToUnit{\paperwidth-2 cm-0.2 cm+0.05cm},
+        \LenToUnit{\paperheight-1.0 cm}
+    ){\vtop{{\null}\makebox[0pt][c]{
+        \small\color{gray}\textit{Last updated in October 2024}\hspace{\widthof{Last updated in September 2024}}
+    }}}%
+  }%
+}%
+
+% save the original href command in a new command:
+\let\hrefWithoutArrow\href
+
+% new command for external links:
+\renewcommand{\href}[2]{\hrefWithoutArrow{#1}{\ifthenelse{\equal{#2}{}}{ }{#2 }\raisebox{.15ex}{\footnotesize \faExternalLink*}}}
+
+
+\begin{document}
+    \newcommand{\AND}{\unskip
+        \cleaders\copy\ANDbox\hskip\wd\ANDbox
+        \ignorespaces
+    }
+    \newsavebox\ANDbox
+    \sbox\ANDbox{}
+
+    \placelastupdatedtext
+    \begin{header}
+        \textbf{\fontsize{24 pt}{24 pt}\selectfont Şakir Çimen}
+
+        \vspace{0.2 cm}
+
+        \normalsize
+        \mbox{{\color{black}\footnotesize\faMapMarker*}\hspace*{0.13cm}Ankara, Turkey}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{mailto:sakircimen@gmail.com}{\color{black}{\footnotesize\faEnvelope[regular]}\hspace*{0.13cm}sakircimen@gmail.com}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{tel:+90-555-811-78-99}{\color{black}{\footnotesize\faPhone*}\hspace*{0.13cm}+90 555 811 78 99}}%
+        \kern 0.25 cm%
+        % \AND%
+        % \kern 0.25 cm%
+        % \mbox{\hrefWithoutArrow{https://yourwebsite.com/}{\color{black}{\footnotesize\faLink}\hspace*{0.13cm}yourwebsite.com}}%
+        % \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://linkedin.com/in/sakircimen}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}sakircimen}}%
+        % \kern 0.25 cm%
+        % \AND%
+        % \kern 0.25 cm%
+        % \mbox{\hrefWithoutArrow{https://github.com/yourusername}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}yourusername}}%
+    \end{header}
+
+    \vspace{0.3 cm - 0.3 cm}
+
+
+    \section{Cover Letter}
+
+
+
+        
+        \begin{onecolentry}
+        
+            Harnessing my Computer Engineering background from one of the best universities in Turkey, my journey as a Software Engineer has been defined by bridging user needs with technological excellence for over 7 years. With a firm grasp of data solutions and cloud technologies, strengthened by a suite of AWS certifications, I have specialized in architecting scalable cloud infrastructures and resolving synchronization challenges. My commitment to innovation and teamwork underpins a track record of delivering long-term solutions and leading the implementation of many complex architectures, ensuring robust and efficient systems tailored to the diverse business needs of our fast-paced industry.
+
+            Having significant international experience already, I am available for both full-time employment and B2B \mbox{contract} opportunities globally in a remote setting, offering the flexibility and expertise required to drive success in dynamic, high-demand business environments.
+
+            
+            
+            %and my ongoing pursuit of architectural innovation.
+            
+            
+            %pushing the boundaries of cloud computing and developing innovative solutions.
+            
+            %With a background in Computer Engineering from Hacettepe University and a suite of AWS certifications,
+            
+            %I have thrived as a Software Engineer for longer than 7 years. 
+            
+
+            
+%Education from Hacettepe Üniversitesi provided a strong foundation in computer engineering that complemented my hands-on experience. My drive for continuous improvement and the successful launch of a customer service project reflect my dedication to delivering value through practical applications of my technical expertise.
+
+%enhancing efficiency through a DevOps approach and cloud technologies
+
+%My educational foundation in Computer Engineering from Hacettepe Üniversitesi and my AWS certifications are the bedrock of my specialization. With expertise in cloud computing and machine learning algorithms, I spearheaded a successful project for our Customer Service team, addressing synchronization challenges and leading architectural migrations to bolster scalability.
+
+
+
+%Our team at ParkHere GmbH thrived through my engagement in creating a smart parking space management system, where I integrated a real-time analytics module and spearheaded DevOps initiatives. The education I received in Computer Engineering from Hacettepe Üniversitesi proved invaluable, enabling me to excel in complex cloud environments and machine learning applications.
+
+%My core competencies lie in the seamless fusion of software development and cloud infrastructure, evidenced by the successful launch of innovative projects and the resolution of critical synchronization and scalability issues. These efforts reflect my commitment to bridging user needs with technological excellence and my ongoing pursuit of architectural innovation.
+
+            %This, combined with my AWS certifications, underscores my dedication to excellence in cloud architecture
+            
+            %My core competencies in machine learning algorithms and cloud technologies, strengthened by multiple AWS certifications, have been instrumental in resolving synchronization and scalability challenges. The initiative to develop a customer service project during a hackathon proved my ability to deliver innovative solutions, reflecting my commitment to continuous learning and driving customer satisfaction.
+
+            %As a Hacettepe University graduate with a strong foundation in Computer Engineering, my journey has been defined by pushing the boundaries of cloud computing and developing innovative solutions. At ParkHere GmbH, our team engineered a smart parking space management system, where I played a pivotal role in introducing a real-time analytics module, utilizing my expertise in Machine Learning Algorithms and Cloud Firestore to streamline data processes. 
+
+            %Hello! I am a seasoned software developer with 
+
+            %Harnessing my Computer Engineering background from Hacettepe Üniversitesi, I have thrived as a Software Engineer at ParkHere GmbH, where my focus has been on developing an innovative smart parking space management system. At the core of my competencies lie cloud technologies, machine learning algorithms, and a firm grasp on DevOps practices, including infrastructure as code with Terraform.
+
+%My tenure shone brightest when leading the creation of a real-time analytics module, which was pivotal in enhancing the internal management system. This initiative, coupled with my expertise in Cloud Firestore and Keycloak, has cemented my role in resolving complex scalability challenges and setting up critical infrastructures like Grafana for analytics. Our team's collaborative spirit has been instrumental in these successes.
+
+
+ %           My approach is characterized by an adaptive mindset and a commitment to collaborative problem-solving. 
+
+            %Throughout my career, I was able to experience many different companies, methodologies, and most importantly, people. I have been in corporates and startups; developed features for government, partners, end-users, and for myself. I have been through many deadline day chaoses, got through many crises, embraced teamwork in all conditions, and even led my teammates during rough periods. Still, I have never withdrawn from responsibilities, succeeded in every challenge standing in my way, and proven myself numerous times. Now, being already completed much bigger responsibilities than my years of experience might suggest, I am waiting for opportunities to embark on a new chapter in my career in which I can benefit from my skills and experiences.
+
+            
+            
+   %         \href{https://rendercv.com}{RenderCV} is a LaTeX-based CV/resume version-control and maintenance app. It allows you to create a high-quality CV or resume as a PDF file from a YAML file, with \textbf{Markdown syntax support} and \textbf{complete control over the LaTeX code}.
+     %   \end{onecolentry}
+
+    %    \vspace{0.2 cm}
+
+      %  \begin{onecolentry}
+       %     The boilerplate content was inspired by \href{https://github.com/dnl-blkv/mcdowell-cv}{Gayle McDowell}.
+        \end{onecolentry}
+
+
+    
+    %\section{Quick Guide}
+
+    %\begin{onecolentry}
+     %   \begin{highlightsforbulletentries}
+
+
+      %  \item Each section title is arbitrary and each section contains a list of entries.
+
+       % \item There are 7 unique entry types: \textit{BulletEntry}, \textit{TextEntry}, \textit{EducationEntry}, \textit{ExperienceEntry}, \textit{NormalEntry}, \textit{PublicationEntry}, and \textit{OneLineEntry}.
+
+        %\item Select a section title, pick an entry type, and start writing your section!
+
+        %\item \href{https://docs.rendercv.com/user_guide/}{Here}, you can find a comprehensive user guide for RenderCV.
+
+
+        %\end{highlightsforbulletentries}
+    %\end{onecolentry}
+    
+    \section{Skills}
+
+
+
+        
+        \begin{onecolentry}
+            \textbf{Languages and Frameworks:} Kotlin, Java, Python, SQL, Spring Boot, gRPC, Vaadin
+            %C (basic), JavaScript (basic)
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Infrastructure and Build Tools:} Terraform, Docker, Maven, Gradle
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Architectures:} Microservices, Monolithic, Cloud (AWS), Server-based, Serverless
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Cloud Services:} 
+            AWS Lambda, CloudWatch, SQS, EC2, S3, RDS, Kinesis, Cognito, Cloudfront, EventBridge
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Databases:} PostgreSQL, MySQL, Redshift, DynamoDB, MongoDB, Redis, Elasticsearch
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Database Management Systems:} 
+          Spring Data, Hibernate, JDBC, Flyway, Liquibase
+          \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+           \textbf{Monitoring tools:} Datadog, Grafana, Cloudwatch
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
+        \begin{onecolentry}
+            \textbf{Soft Skills:} 
+            Team Player, Responsible, Leader, Joyful, Communicative, Sociable, Open to Feedback, Problem Solving, Professionalism, Work Under Pressure
+            %\cvtag{Learning Potential}% \cvtag{Observant}
+
+
+        \end{onecolentry}
+
+
+    
+    \section{Certifications}
+
+
+            \begin{twocolentry}{
+                \textit{2024}
+            }
+                \href{https://www.credly.com/badges/1b8375d1-8a9a-436e-9918-e18596bd8f5f/public_url}{\textbf{AWS Certified Cloud Practitioner}}
+            \end{twocolentry}
+        \vspace{0.13 cm}
+            \begin{twocolentry}{
+                \textit{2024}
+            }
+                \href{https://www.credly.com/badges/1b8375d1-8a9a-436e-9918-e18596bd8f5f/public_url}{\textbf{AWS Certified Developer – Associate}}
+            \end{twocolentry}
+        \vspace{0.1 cm}
+            \begin{twocolentry}{
+                \textit{2024}
+            }
+                \href{https://www.credly.com/badges/1b8375d1-8a9a-436e-9918-e18596bd8f5f/public_url}{\textbf{AWS Certified Solutions Architect – Associate}}
+            \end{twocolentry}
+        \vspace{0.1 cm}
+            \begin{twocolentry}{
+                \textit{2024}
+            }
+                \href{https://www.credly.com/badges/1b8375d1-8a9a-436e-9918-e18596bd8f5f/public_url}{\textbf{AWS Certified Solutions Architect – Professional}}
+            \end{twocolentry}
+    
+    
+    \section{Experience}
+
+
+        %\vspace{0.01 cm}
+
+
+            \begin{samepage}
+                
+        \begin{twocolentry}{   
+            
+        \textit{Aug 2022 – June 2024}}
+            \mbox{\textbf{ParkHere GmbH},
+            \textit{Munich}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+            \item Worked on all aspects of smart parking space management system, working mostly with Kotlin and Python.
+\item Adopted end-to-end ownership and DevOps mentality to maintain infrastructure with Terraform.
+\item Built a real-time analytics module from scratch, introducing Redshift as a data lake, setting up data streaming from DynamoDB, and implementing the microservice communicating with end-users.
+\item Set up Grafana for serving analytics data for internal usage, helping Marketing and Customer Service teams.
+\item Led planning for long-term solutions and architectural migrations.
+\item Launched a new automation tool using a new Cloudfront dist authenticated via Lambda@Edge \& Google Groups and a new microservice for the Customer Service team during a hackathon.
+\item Prepared and ran load tests on the system with JMeter and Postman.
+\item Identified and resolved many synchronization and scalability issues with time pressure, such as misconfigured DB indexes, avoiding API-GW limits, duplicate reservations, ghost locks etc.
+\item Maintained user provisioning endpoints based on SCIM protocol.
+\item Coached and mentored Junior developers and QA Engineers.
+\item Supported IoT team through code reviews and bug investigations using IoT tools such as Balena.
+%\item Led debugging and resolving many critical issues with time pressure, including .
+            \end{highlights}
+        \end{onecolentry}
+
+            \end{samepage}
+        % \vspace{0.2 cm}
+        \newpage
+    
+        \begin{twocolentry}{   
+            
+        \textit{Mar 2021  – Apr 2022}}
+            \mbox{\textbf{Bayzat},
+            \textit{Dubai}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+\item Developed user-oriented modules of an HR \& Insurance platform, using Kotlin and Spring Boot.
+\item Architected \& implemented integration with a pharmacy via HTTP requests, including fetching the catalog periodically with the help of EventBridge, passing orders to the provider, tracking packages in real-time, 
+\item Implemented search-on-type for the products sitting on Mongo via Elasticsearch. 
+\item We ideated and launched \textit{Employee Wellness} module during a hackathon and introduced competitions amongst employees to increase interaction and hype, which proved so successful it is sold separately by the company generating extra revenue.
+\item Maintained and improved existing features and integrations, such as doctor booking and online consultancies to optimize request frequency, better error handling, re-designed user experience, etc.  
+\item Implemented many pages for product management teams using Vaadin.
+\item Involved in all phases of development processes, including planning, product \& design decisions.
+\item As the most experienced team member, I mentored teammates in tech decisions and development processes.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.35 cm}
+    
+        \begin{twocolentry}{   
+            
+        \textit{Apr 2019 - Mar 2021}}
+            \mbox{\textbf{HAVELSAN},
+            \textit{Ankara}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+            \item Joined development of \href{https://www.youtube.com/watch?v=YnbQ9wY3OYE}{Astar-BI}, by a giant Turkish company operating in the defense \& IT sectors.
+%\item  involved in all microservices, builds, and releases.
+\item Ongoing greenfield project. From a near-scratch level, we made it marketable within a year.
+\item Contributed to all microservices, using Java \& Spring Boot, resolved issues around RabbitMQ to improve overall speed, fixing any issues that pop up via external load \& security tests.
+\item We cooperated closely with Turkish Ministry of Education officials to receive and quickly act upon feedback.
+%and maximize satisfaction.  %and smoothly get tender acceptance.
+\item After launch \& first sell, we made key improvements in performance, such as re-designed authorization \& sharing mechanism using ACLs and Mongo, reducing the time required for sharing to take effect by 98\%.
+\item Implemented search-on-type with Elasticseach for OLAP cubes fetched from Oracle, PostgreSQL and others.
+%\item Re-architected and implemented 
+\item Implemented a prototype of microservices communicating in between using gRPC, potentially increasing the data transfer speed by 42\%.
+\item After a new team landed on the project, I coordinated and mentored new teammates.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.35 cm}
+    
+        \begin{twocolentry}{   
+            
+        \textit{Apr 2018 - Apr 2019}}
+            \mbox{
+            \textbf{Medyasoft \& Revenue Administration of Turkey},
+            \textit{Ankara}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+            \item  Joined a brownfield project, Defter Beyan Sistemi, a tax calculation \& declaration system of the Revenue Administration of Turkey, which has hundreds of thousands of users and legal effects on millions of people.
+            \item Developed with Java, Spring Boot, JDBC, Liquibase and challenged by serious time pressure, up to multiple builds every day, frequent deadlines set often by the government.
+\item  Architected, developed, and maintained the backend of the Fixtures module on my own, and sometimes led other developers for it.
+%\item  with the potential risk of even slightest rounding error could cause issues for millions, 
+\item  Had to solve legally critical problems, secure APIs for external users.
+\item  Collaborated closely with accountants and institute consultants.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.35 cm}
+    
+        \begin{twocolentry}{   
+            
+        \textit{Jul 2017 - Feb 2018}}
+            \mbox{\textbf{Locksmith Software Technologies},
+            \textit{Ankara}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+            \item  Created an ontology graph by text mining using various NLP techniques.
+            \item Planned and implemented pre-processing and post-processing operations for Turkish and English texts. 
+            \item Used libraries such as \textit{word2vec}, \textit{zemberek} and \textit{scikit-learn} to improve overall accuracy.
+\item  As the only engineer with machine learning knowledge, I was the decision-maker of the project, unofficially managing a team of junior developers and interns, based on my previous studies.
+\item  Prepared and presented the project to academics of many degrees, and consulted their ideas.
+\item  Gave multiple presentations for other projects in KSA as the company's representative.
+            \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.35 cm}
+    
+        \begin{twocolentry}{   
+            
+        \textit{Jan 2017 - Feb 2017}}
+            \mbox{\textbf{MBIS Consulting},
+            \textit{Ankara}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}    \item Internship on SAB / ABAP development        \end{highlights}
+        \end{onecolentry}
+
+        \vspace{0.35 cm}
+    
+        \begin{twocolentry}{   
+            
+        \textit{Jun 2016 - Aug 2016}}
+            \mbox{\textbf{Basari Mobile},
+            \textit{Ankara}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}    
+            \item Internship on native Android development 
+            %\item Observed production of Kaan Launcher and Kaan N1.
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+
+\newpage
+        \begin{samepage}    
+
+    \section{Projects}
+
+
+        \vspace{0.2 cm}
+        \begin{twocolentry}{
+            
+            
+        \textit{2020}}
+            \textbf{Vehicle Tracking System}
+        \end{twocolentry}
+
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Designed, developed and delivered a backend for a vehicle tracking system.
+                \item Built a native query builder for JDBC from scratch to support custom complex queries on the database.
+
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \vspace{0.2 cm}
+
+
+        
+        \begin{twocolentry}{
+            
+            
+        \textit{2017}}
+            \textbf{Referandum App}
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+                \item Influenced my friends to build an informal graduation project.
+\item Developed a native Android app and published it on Google Play Store ( now intentionally removed ).
+\item Connected Firebase to collect metrics and integrated ads.
+\item Developed manual security algorithms for safe information transfer to our server.
+\item Coordinated and/or executed all aspects of project management: ideation, planning, architecting, implementation, advertising, etc.
+            \end{highlights}
+        \end{onecolentry}
+
+
+        \end{samepage}  
+        
+        \vspace{0.35 cm}
+    \section{Education}
+
+
+
+        
+        \begin{twocolentry}{
+            
+            
+        \textit{Sept 2013 – May 2017}}
+            \textbf{Hacettepe University}
+
+            \textit{BS in Computer Engineering}
+        \end{twocolentry}
+
+        \begin{onecolentry}
+            \begin{highlights}
+                \item GPA: 3.16/4.0 
+                %(\href{https://example.com}{a link to somewhere})
+                \item \textbf{Coursework:} Machine Learning, Artificial Intelligence, Image Processing, Data Management, Data Intensive Applications, Database Management Systems, Software Quality Assurance
+            \end{highlights}
+        \end{onecolentry}
+
+
+
+    
+
+\end{document}
