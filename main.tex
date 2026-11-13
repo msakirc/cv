@@ -18,6 +18,7 @@
 \usepackage{enumitem} % for customizing lists
 \usepackage{fontawesome5} % for using icons
 \usepackage{amsmath} % for math
+\usepackage{graphicx} % for \scalebox (narrow approx tilde)
 \usepackage[
     pdftitle={Sakir Cimen's Resume},
     pdfauthor={Sakir Cimen},
@@ -189,7 +190,7 @@
 
         \begin{onecolentry}
 
-            Team Lead and hands-on architect with 9+ years shipping backend systems across Turkey, UAE, and Germany. Mentored teams in every role, drove product decisions alongside stakeholders, and delivered under government deadlines and startup pressure alike. Currently modernizing a mission-critical tax platform serving millions, with a growing focus on AI and autonomous systems. AWS Certified Solutions Architect – Professional. Available worldwide for both full-time employment and B2B \mbox{contract} opportunities, remote-first.
+            Team Lead and hands-on architect with 9+ years shipping backend systems across Turkey, UAE, and Germany. Mentored teams in every role, drove product decisions alongside stakeholders, and delivered under government deadlines and startup pressure alike. Currently modernizing a mission-critical tax platform serving millions, with a growing personal focus on AI-assisted development. Available worldwide for both full-time employment and B2B \mbox{contract} opportunities, remote-first.
 
             %Throughout my career, I was able to experience many different companies, methodologies, and most importantly, people. I have been in corporates and startups; developed features for government, partners, end-users, and for myself. I have been through many deadline day chaoses, got through many crises, embraced teamwork in all conditions, and even led my teammates during rough periods. Still, I have never withdrawn from responsibilities, succeeded in every challenge standing in my way, and proven myself numerous times. Now, being already completed much bigger responsibilities than my years of experience might suggest, I am waiting for opportunities to embark on a new chapter in my career in which I can benefit from my skills and experiences.
 
@@ -309,7 +310,7 @@
             \begin{highlights}
             \item Leading the Core Architecture team for Defter Beyan Sistemi (DBS) -- a mission-critical tax platform relied on daily by hundreds of thousands of accountants for all financial records and declarations -- modernizing the same system I helped build years earlier.
 \item Migrated the platform from Java 8 to 21 and Spring Boot 1.5 to 3.5, updating dozens of dependent libraries and resolving compatibility between Jersey and Spring across the codebase.
-\item Standardized logging across $\sim$400 classes to improve observability and enable effective production monitoring.
+\item Standardized logging across \raisebox{0.3ex}{\scalebox{0.7}{$\sim$}}400 classes to improve observability and enable effective production monitoring.
 \item Migrated the legacy Vergi Bilinci application onto the shared platform, aligning its core libraries, exception handling, and database access layers with the existing architecture.
 \item Modernizing dozens of legacy WSDL/SOAP integrations into REST endpoints, replacing AspectJ-based service calls with modern HTTP clients.
 \item Ensuring backend compatibility with the ongoing Kubernetes migration, resolving library conflicts and adapting applications for containerized deployment.
@@ -330,7 +331,7 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Developed and scaled a B2B smart parking platform with 100+ corporate clients including BMW and Henkel, spanning $\sim$30 microservices across the DACH region.
+            \item Developed and scaled a B2B smart parking platform with 100+ corporate clients including BMW and Henkel, spanning \raisebox{0.3ex}{\scalebox{0.7}{$\sim$}}30 microservices across the DACH region.
 \item Maintained cloud infrastructure across 10+ AWS accounts and 3 environments using Terraform, identifying resource leaks and over-provisioned services that saved thousands of euros in monthly cloud costs.
 \item Built a real-time analytics module from scratch, introducing Redshift as a data lake, streaming data from DynamoDB, and serving custom dashboards for end-users.
 \item Deployed Grafana dashboards that enabled Marketing and Customer Service teams to independently access analytics data.
@@ -381,7 +382,7 @@
         \begin{onecolentry}
             \begin{highlights}
             \item Developed \href{https://www.youtube.com/watch?v=YnbQ9wY3OYE}{Astar-BI}, a greenfield business intelligence platform, in HAVELSAN's R\&D Division (Big Data \& AI team), taking it from near scratch to market-ready within a year.
-\item Shipped the first production deployment to the Turkish Ministry of Education, enabling analysis across $\sim$67,000 schools.
+\item Shipped the first production deployment to the Turkish Ministry of Education, enabling analysis across \raisebox{0.3ex}{\scalebox{0.7}{$\sim$}}67,000 schools.
 \item Developed across all microservices using Java and Spring Boot, resolving RabbitMQ bottlenecks and addressing defects surfaced by external load and security tests.
 \pagebreak
 \item Worked on-site with Turkish Ministry of Education officials for months, conducting demos, acceptance tests, and incorporating feedback into rapid iteration cycles.
@@ -517,7 +518,6 @@
 %
 %         \end{samepage}  
         
-        \vspace{0.35 cm}
     \section{Education}
 
 
@@ -528,6 +528,7 @@
             \textbf{Hacettepe University}, \textit{BS in Computer Engineering}
         \end{twocolentry}
 
+        \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
                 \item GPA: 3.16/4.0
