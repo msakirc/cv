@@ -33,6 +33,7 @@
 \usepackage{paracol} % for two and three column entries
 \usepackage{ifthen} % for conditional statements
 \usepackage{needspace} % for avoiding page brake right after the section title
+\usepackage{etoolbox} % for \patchcmd (footer)
 \usepackage{iftex} % check if engine is pdflatex, xetex or luatex
 
 % Ensure that generate pdf is machine readable/ATS parsable:
@@ -177,10 +178,10 @@
         \AND%
         \kern 0.25 cm%
         \mbox{\hrefWithoutArrow{https://linkedin.com/in/sakircimen}{\color{black}{\footnotesize\faLinkedinIn}\hspace*{0.13cm}sakircimen}}%
-        % \kern 0.25 cm%
-        % \AND%
-        % \kern 0.25 cm%
-        % \mbox{\hrefWithoutArrow{https://github.com/yourusername}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}yourusername}}%
+        \kern 0.25 cm%
+        \AND%
+        \kern 0.25 cm%
+        \mbox{\hrefWithoutArrow{https://github.com/msakirc}{\color{black}{\footnotesize\faGithub}\hspace*{0.13cm}msakirc}}%
     \end{header}
 
     \vspace{0.3 cm - 0.3 cm}
@@ -190,7 +191,7 @@
 
         \begin{onecolentry}
 
-            Team Lead and hands-on architect with 9+ years shipping backend systems across Turkey, UAE, and Germany. Mentored teams in every role, drove product decisions alongside stakeholders, and delivered under government deadlines and startup pressure alike. Currently modernizing a mission-critical tax platform serving millions, with a growing personal focus on AI-assisted development. Available worldwide for both full-time employment and B2B \mbox{contract} opportunities, remote-first.
+            Team Lead and hands-on architect seasoned in AI-assisted development, with 9+ years shipping backend systems across Turkey, UAE, and Germany. Mentored teams in every role, drove product decisions alongside stakeholders, and delivered under government deadlines and startup pressure alike. Currently modernizing a mission-critical tax platform serving millions, while directing, reviewing, and working on multi-agent AI systems in personal projects. Available worldwide for both full-time employment and B2B \mbox{contract} opportunities, remote-first.
 
             %Throughout my career, I was able to experience many different companies, methodologies, and most importantly, people. I have been in corporates and startups; developed features for government, partners, end-users, and for myself. I have been through many deadline day chaoses, got through many crises, embraced teamwork in all conditions, and even led my teammates during rough periods. Still, I have never withdrawn from responsibilities, succeeded in every challenge standing in my way, and proven myself numerous times. Now, being already completed much bigger responsibilities than my years of experience might suggest, I am waiting for opportunities to embark on a new chapter in my career in which I can benefit from my skills and experiences.
 
@@ -200,7 +201,14 @@
 
 
 
-        
+
+        \begin{onecolentry}
+            % \mbox per term so lines break only at commas; ragged-right inside the group only. Order tuned to fit 3 lines.
+            {\raggedright\textbf{AI \& ML:} \mbox{AI Agents \& Multi-Agent Systems}, \mbox{AI-Assisted Development}, \mbox{Model Context Protocol (MCP)}, \mbox{Generative AI \& Large Language Models}, \mbox{Retrieval-Augmented Generation (RAG)}, \mbox{Tool Calling}, \mbox{LLM Evaluation}, \mbox{AI Guardrails}, \mbox{LLM Inference}, \mbox{llama.cpp}, \mbox{Natural Language Processing (NLP)}\par}
+        \end{onecolentry}
+
+        \vspace{0.125 cm}
+
         \begin{onecolentry}
             \textbf{Languages:} Kotlin, Java, Python, SQL, C, JavaScript
         \end{onecolentry}
@@ -232,7 +240,7 @@
         \vspace{0.125 cm}
 
         \begin{onecolentry}
-            \textbf{Databases \& Data Access:} PostgreSQL, MySQL, Redshift, DynamoDB, MongoDB, Redis, Elasticsearch, JDBC, Flyway, Liquibase
+            \textbf{Databases \& Data Access:} PostgreSQL, MySQL, SQLite, Redshift, DynamoDB, MongoDB, Redis, Elasticsearch, JDBC, Flyway, Liquibase
         \end{onecolentry}
 
         \vspace{0.125 cm}
@@ -253,12 +261,6 @@
             \textbf{Messaging \& Streaming:} RabbitMQ, SQS, SNS, Kinesis, Firehose, EventBridge
         \end{onecolentry}
 
-        \vspace{0.125 cm}
-
-        \begin{onecolentry}
-            \textbf{AI \& ML:} AI-Assisted Development, MCP, RAG, Embeddings, Local LLM Inference
-        \end{onecolentry}
-
         % \vspace{0.125 cm}
 
         % \begin{onecolentry}
@@ -270,30 +272,13 @@
     
     \section{Certifications}
 
-
-            \begin{twocolentry}{
-                \textit{2024}
-            }
-                \href{https://www.credly.com/badges/9e37a123-fb56-4e1a-a5ef-e6b7577994d4/public_url}{\textbf{AWS Certified Cloud Practitioner}}
-            \end{twocolentry}
-        \vspace{0.13 cm}
-            \begin{twocolentry}{
-                \textit{2024}
-            }
-                \href{https://www.credly.com/badges/f92e4676-4ac2-445e-9f79-c79010f18535/public_url}{\textbf{AWS Certified Developer – Associate}}
-            \end{twocolentry}
-        \vspace{0.1 cm}
-            \begin{twocolentry}{
-                \textit{2024}
-            }
-                \href{https://www.credly.com/badges/392034cf-7027-4cd5-a6ca-524e2f538ce7/public_url}{\textbf{AWS Certified Solutions Architect – Associate}}
-            \end{twocolentry}
-        \vspace{0.1 cm}
-            \begin{twocolentry}{
-                \textit{2024}
-            }
-                \href{https://www.credly.com/badges/a8a912a1-a18e-4472-9496-53d073360f15/public_url}{\textbf{AWS Certified Solutions Architect – Professional}}
-            \end{twocolentry}
+        % \small so both architect certs fit on one row
+        \begin{onecolentry}
+            {\small\begin{tabular}{@{}l@{\hspace{0.6cm}}l@{}}
+                \href{https://www.credly.com/badges/a8a912a1-a18e-4472-9496-53d073360f15/public_url}{\textbf{AWS Certified Solutions Architect – Professional}} & \href{https://www.credly.com/badges/392034cf-7027-4cd5-a6ca-524e2f538ce7/public_url}{\textbf{AWS Certified Solutions Architect – Associate}} \\[0.13cm]
+                \href{https://www.credly.com/badges/f92e4676-4ac2-445e-9f79-c79010f18535/public_url}{\textbf{AWS Certified Developer – Associate}} & \href{https://www.credly.com/badges/9e37a123-fb56-4e1a-a5ef-e6b7577994d4/public_url}{\textbf{AWS Certified Cloud Practitioner}}
+            \end{tabular}\par}
+        \end{onecolentry}
     
     
     \section{Experience}
@@ -427,9 +412,29 @@
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-            \item Led an NLP research project to build a religious ontology graph -- the only engineer with machine learning expertise, managing a small team of recent graduates and interns.
+            \item Led a natural language processing (NLP) research project to build a religious ontology graph -- the only engineer with machine learning expertise, managing a small team of recent graduates and interns.
             \item Designed text mining pipelines for Turkish and English using \textit{word2vec}, \textit{zemberek}, and \textit{scikit-learn}, iterating on accuracy with feedback from professors at top Turkish universities.
 \item Represented the company as a technical presenter across multiple projects.
+            \end{highlights}
+        \end{onecolentry}
+
+    \section{Projects}
+
+        \begin{twocolentry}{
+        \textit{Feb 2026 – Present}}
+            \mbox{\href{https://github.com/msakirc/kutai}{\textbf{KutAI}},
+            \textit{Open-source agent system and 23 packages}
+            }
+        \end{twocolentry}
+
+        \vspace{0.10 cm}
+        \begin{onecolentry}
+            \begin{highlights}
+            \item Envisioned and built a Telegram-driven agentic system running multi-step missions on local GPU and cloud LLMs, owning architecture and specs while directing and reviewing Claude Code over 3,200+ commits.
+            \item Built the agent runtime: a ReAct loop over 38 tool modules and MCP servers, embedding and BM25 RAG for memory, and a task queue with admission control, retries, and a dead-letter queue.
+            \item Built a model router that sizes up each task against benchmarked model intelligence, balancing quotas, cost, time, and GPU load via a 15-signal matrix with multipliers mirroring the resources in play.
+            \item Split the system into layered open-source packages that work together, including a llama.cpp minder for safe model swaps, a rate-limit bookkeeper for cloud LLMs, a matchmaker picking MCP servers and APIs per task, an audit that makes every layer justify itself, and a web fetcher that outmaneuvers anti-bot systems.
+            \item Built evals and guardrails that trust no single layer: LLM-graded step outcomes, a fail-closed critic gate before irreversible actions, a tripwire for loops or runaway output, a bouncer for risky shell commands, a black-box flight recorder, and a supervisor that restarts processes on missed heartbeats.
             \end{highlights}
         \end{onecolentry}
 
@@ -525,13 +530,12 @@
         
         \begin{twocolentry}{
         \textit{Sept 2013 – May 2017}}
-            \textbf{Hacettepe University}, \textit{BS in Computer Engineering}
+            \textbf{Hacettepe University}, \textit{BS in Computer Engineering, GPA 3.16/4.0}
         \end{twocolentry}
 
         \vspace{0.10 cm}
         \begin{onecolentry}
             \begin{highlights}
-                \item GPA: 3.16/4.0
                 \item \textbf{Coursework:} Machine Learning, Artificial Intelligence, Image Processing, Data Management, Data Intensive Applications, Database Management Systems, Software Quality Assurance
             \end{highlights}
         \end{onecolentry}
